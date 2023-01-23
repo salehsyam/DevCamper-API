@@ -3,7 +3,6 @@ const slugify = require('slugify');
 const geocoder = require('../utils/geocoder');
 
 const { Schema } = mongoose;
-
 const BootcampSchema = new Schema(
   {
     name: {
@@ -68,7 +67,6 @@ const BootcampSchema = new Schema(
         'UI/UX',
         'Data Science',
         'Business',
-        'flutter',
         'Other',
       ],
     },
@@ -102,12 +100,20 @@ const BootcampSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+    versionKey: false,
   }
 );
+
+// Create bootcamp slug from the name
 BootcampSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
@@ -146,4 +152,5 @@ BootcampSchema.virtual('courses', {
   foreignField: 'bootcamp',
   justOne: false,
 });
+
 module.exports = mongoose.model('Bootcamp', BootcampSchema);
