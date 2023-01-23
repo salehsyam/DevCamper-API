@@ -2,7 +2,14 @@
 
 > Backend API for DevCamper application, which is a bootcamp directory website
 
-
+# :computer: Technologies
+This project was made using the follow technologies:
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js</a></li>
+<li><a href="https://expressjs.com/">Express</a></li>
+<li><a href="https://www.mongodb.com/">Mongodb</a></li>
+<li><a href="https://www.npmjs.com/package/express-handlebars">Express Handlebars</a></li>
+</ul> 
 
 
 
